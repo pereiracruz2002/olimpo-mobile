@@ -1,0 +1,37 @@
+<ion-view title="Serviços" >
+<ui-view >
+    <ion-content class="content has-header">
+
+
+        <div class="row" >
+            <div class="card"  ng-if="servicos.length == 0">
+                <div class="item item-text-wrap">
+                    Nenhum Serviço Encontrado
+                </div>
+            </div>
+        </div>
+
+
+    <div class="col text-center" ng-show="loading"><ion-spinner icon="spiral"></ion-spinner></div>
+
+
+
+        <div ng-repeat="servico in servicos" class="list card">
+
+            <div class="item item-button-right">
+                {{servico.nome}}
+                <a href="#/app/usuarios/servico/{{servico.servicos_id}}" class="button button-positive">
+                    <i class="icon ion-ios-paw"></i>
+                </a>
+            </div>
+
+        </div>
+
+    </ion-content>
+
+</ui-view>
+</ion-view>
+
+
+
+

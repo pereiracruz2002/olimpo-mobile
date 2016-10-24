@@ -1,0 +1,105 @@
+<ion-view title="Doações Disponíveis">
+<ion-content class="content has-header">
+
+
+<form id="filtrar"  ng-submit="filtrar()">
+
+
+
+<div class="row">
+    <div class="col col-50"><h4>Busca de doações</h4></div>
+    <div class="col col-bottom  col-50"><a class="pull-right button button-energized corpadrao" href="#/app/doacoes">Minhas Doações</a></div>
+</div>
+
+<label class="item item-input item-select">
+  <div class="input-label">
+    Categorias
+  </div>
+  <select name="categoria" id="tipo">
+    <option value="">Selecione a Categoria</option>
+    <option value="{{categoria.categorias_doacao_id}}" ng-repeat="categoria in categorias">{{categoria.nome}}</option>
+  </select>
+</label>
+
+<label class="item item-input item-select">
+  <div class="input-label">
+    Animal
+  </div>
+   <select name="tipo" id="tipo">
+    <option value="">Selecione o Animal</option>
+    <option value="{{tipo.tipos_id}}" ng-repeat="tipo in tipos" >{{tipo.nome}}</option>
+  </select>
+</label>
+
+    <label class="item item-input item-stacked-label range">
+        <span>Distância</span>
+        <input type="range" name="distancia" id="distancia" ng-model="myModel.distancia" placeholder="Distância em Km" min="1" max="50" required>
+        {{myModel.distancia}} Km
+    </label>
+ <div class="padding">
+ <button class="button button-block button-positive activated">Filtrar</button>
+ </div>
+
+
+  
+</form>
+
+
+
+
+
+
+<div class="card"  ng-if="minhasDoacoes.length == 0">
+  <div class="item item-text-wrap">
+   Nenhuma doação cadastrada
+  </div>
+</div>
+</div>
+
+<div class="col text-center" ng-show="loading"><ion-spinner icon="spiral"></ion-spinner></div>
+
+
+
+
+<div class="list card" id="listagem-solicitacoes"  >
+
+  <div class="row header">
+    <div class="col col-50 col-center">Titulo</div>
+
+    <div class="col col-50 col-center">Detalhes</div>
+  </div>
+  <div class="row" ng-repeat="doacao in minhasDoacoes">
+    <div class="col col-50 col-center"><p>{{doacao.titulo}}</p></div>
+
+
+
+   <div class="col col-50 col-center">
+     <a href="#/app/doacoes/detalhes/{{doacao.doacoes_id}}">Saiba Mais</a>
+    </div>
+  
+
+  </div>
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+</ion-content>
+</ion-view>
+

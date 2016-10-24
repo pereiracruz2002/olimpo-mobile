@@ -1,0 +1,41 @@
+<ion-view title="Buscar Serviços" >
+    <ion-content class="content has-header">
+        <form id="filtrar-servicos"  class="ng-pristine ng-valid list list-inset" name="mainForm">
+            <label class="item item-input item-select" for="animal">
+                <div class="input-label">
+                  Animal
+                </div>
+                 <select name="tipo" id="animal" ng-model="myModel.animal" ng-required="true">
+                  <option value="{{tipo.tipos_id}}" ng-repeat="tipo in tipos">{{tipo.nome}}</option>
+                </select>
+            </label>
+
+            <label class="item item-input" ng-class="categorias.length > 0 ? 'item-select' : ''" ng-show="categorias.length > 0">
+                <div class="input-label" for="categoria">
+                    Categoria
+                </div>
+                <div class="text-right col-50" ng-show="loading_categorias">
+                    <ion-spinner icon="spiral"></ion-spinner>
+                </div>
+                <select name="categoria" id="categoria" ng-model="myModel.categoria">
+                    <option value="{{categoria.servicos_id}}" ng-repeat="categoria in categorias">{{categoria.nome}}</option>
+                </select>
+            </label>
+            <ion-list>
+                <ion-radio ng-model="myModel.tipo_busca" ng-value="'gps'">Perto de Mim</ion-radio>
+                <ion-radio ng-model="myModel.tipo_busca" ng-value="'cep'">Alterar Localização</ion-radio>
+            </ion-list>
+            <label class="item item-input item-stacked-label range" ng-show="myModel.tipo_busca == 'gps'">
+                <span>Distância</span>
+                <input type="range" name="distancia" id="distancia" ng-model="myModel.distancia" min="1" max="50" required>
+                {{myModel.distancia}} Km
+            </label>
+
+            <label class="item item-input item-stacked-label" ng-show="myModel.tipo_busca == 'cep'">
+               <span class="input-label" id="cep">CEP</span>
+               <input type="tel" name="cep" id="cep" ng-model="myModel.cep" ng-required="myModel.tipo_busca == 'cep'" ui-mask="99999-999">
+            </label>
+            <button class="button button-full button-positive activated" ng-click="buscarServico()" ng-disabled="mainForm.$invalid"><i class="icon ion-ios-search"></i> Buscar</button>
+        </form>
+    </ion-content>
+</ion-view>

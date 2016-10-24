@@ -1,0 +1,40 @@
+<ion-view title="Bem Vindo">
+    <ion-content>
+        <div class="list card">
+            <div class="item item-divider">
+                <i class="icon ion-ios-lightbulb-outline"></i> Dica do dia
+                <a href="" class="pull-right" ng-click="dica=false" ng-show="dica==true"><i class="icon ion-ios-close-outline"></i></a>
+                <a href="" class="pull-right" ng-click="dica=true" ng-show="dica==false"><i class="icon ion-ios-plus-outline"></i></a>
+            </div>
+            <dica class="dica" ng-class="dica ? 'dica-on' : 'dica-off'"></dica>
+        </div>
+		<div class="card"  ng-if="animais.length == 0">
+            <div class="item item-text-wrap assertive">
+                Nenhum animal cadastrado
+            </div>
+		</div>
+
+		<div class="col text-center" ng-show="loading"><ion-spinner icon="spiral"></ion-spinner></div>
+		<div class="list card listagem-animais" ng-repeat="animal in animais">
+
+		<div class="item item-body">
+		    <img class="full-image" src="{{animal.imagem |concatenaservidor}}">
+		</div>
+
+		<div id="opcoes-container">
+            <a href="#/app/servicos/{{animal.tipos.tipos_id}}" class="opcoes">
+                <div class="border"><i class="ion-android-add"></i></div>
+                <p>Serviços</p>
+            </a>
+            <a href="#/app/encontros/{{animal.animais_id}}" class="opcoes">
+                <div class="border"><i class="ion-chatboxes"></i></div>
+                <p>Encontros</p>
+            </a>
+            <a href="#/app/encontros/matches/{{animal.animais_id}}" class="opcoes">
+                <div class="border"><i class="ion-heart"></i></div>
+                <p>Combinações</p>
+            </a>
+		</div>
+    </ion-content>
+
+</ion-view>

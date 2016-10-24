@@ -1,0 +1,235 @@
+<ion-view title="Informações">
+
+<ion-content class="content has-header">
+
+
+    <div class="list card">
+
+        <div class="item item-divider">
+
+            <div class="row">
+            <div class="col-80">
+           <h2 id="titulo-nome">{{detalhes.nome_fantasia}}</h2>
+
+           </div>
+
+           <div class="col-20">
+            
+            <div id="container-estrela">
+
+                <a class="icon ion-chatbubble-working icone-comentario" ng-click="triggerActionSheet()"></a>
+
+               <a  href="#" ng-if="detalhes.favorito=='não'" ng-click='favorito(detalhes.empresas_id)' class="icon ion-android-star-outline estrela-favorito"></a>
+
+               <a  href="#" ng-if="detalhes.favorito=='sim'" ng-click="favorito(detalhes.empresas_id)" class="icon ion-android-star estrela-favorito"></a>
+
+               
+            </div>
+
+            </div>
+
+            </div>
+
+         </div>
+
+         <div class="item item-text-wrap">
+            <div class="row">
+            <div class="col-40">
+                 <img width="100%" ng-src="{{detalhes.imagem | concatenaservidor}}">
+            </div>
+            <div class="col-60" style="padding-left:10px">
+
+
+                <div >
+
+                <h3>CNPJ</h3>
+
+                <p>{{detalhes.cnpj}}</p>
+                
+                <h3>Endereço</h3>
+
+                <p>{{detalhes.enderecos.endereco}} - {{detalhes.enderecos.bairro}} - {{detalhes.enderecos.cidade}} {{detalhes.endereco.estado}} - {{detalhes.enderecos.cep}}</p>
+
+                </div>
+
+                <div >
+
+                <h3 style="margin-top:4px">Contato</h3>
+
+                <p class="destaque"><a href="tel:{{detalhes.enderecos.telefone}}">{{detalhes.enderecos.telefone}}</a></p>
+
+                <p>{{detalhes.email}}</p>
+
+                </div>
+
+
+            </div>
+            </div>
+          </div>
+
+         <div class="item item-divider">
+            <p>
+               
+
+                <a href="#" ng-click="curtir(detalhes.empresas_id,'sim')" class="subdued">{{detalhes.qtdGostei}} <i id="curtidasim" class="ion-thumbsup"></i></a>
+
+
+                <a href="#" ng-click="curtir(detalhes.empresas_id,'não')" class="subdued">{{detalhes.qtdNaoGostei}} <i id="curtidanao" class="ion-thumbsdown"></i></a>
+            
+            </p>
+        </div>
+        
+    </div>
+
+    <div class="list card">
+
+        <div class="item item-divider">
+           <h2>Sobre a Empresa</h2>
+         </div>
+
+         <div class="item item-text-wrap">
+          <p>
+              {{detalhes.descricao}}
+          </p>
+          </div>
+
+        
+    </div>
+
+    <div class="list card">
+
+        <div class="item item-divider">
+           <h2>Serviços</h2>
+         </div>
+
+         <div class="list card" ng-repeat="servico in detalhes.users__servicos">
+
+             <div class="item item-divider">
+                <h2>{{servico.servicos.nome}}</h2>
+              </div>
+
+              <div class="item item-text-wrap">
+               <p>
+                   {{servico.descricao}}
+               </p>
+               </div>
+
+             
+         </div>
+
+
+        
+    </div>
+
+
+   
+
+         
+
+        <form id="form-comentario">
+
+            <div class="list list-inset">
+             <h4 class="titulo-dourado">Deixe sua opinião:</h4>
+              <label class="item item-input">
+            
+            <textarea name="comentario" id="comentario" ng-model="myModel.comentario"  rows="2" placeholder="Digite seu Comentário" ></textarea>
+
+            </label>
+
+            <input type="hidden" name="servico" value="{{detalhes.empresas_id}}">
+
+            <input type="hidden" name="token" value="{{token}}">
+
+            <button type="submit" ng-click="cadastraComentario()" class="button button-block button-positive activated">
+                Enviar
+            </button>
+
+            </div>
+
+
+
+        </form>
+
+        <div class='list list-inset'>
+
+
+        <h4>Comentários</h4>
+
+
+        <div class="card"  ng-if="comentarios.length == 0">
+          <div class="item item-text-wrap">
+           Ainda não há nenhum comentário cadastrado
+          </div>
+        </div>
+        </div>
+
+
+        <div class="list card" ng-repeat="comentario in comentarios | orderBy:'-comentarios_servicos_id'">
+       
+            <div class="item item-avatar">
+                <img src="{{comentario.users.imagem | concatenaservidor}}">
+                <h2>{{comentario.users.nome}}</h2>
+                <p>{{comentario.users.email}}</p>
+
+            </div>
+
+            <div class="item item-body">
+
+                <p>
+                    {{comentario.comentario}}
+                </p>
+
+                <form class="form-reposta" ng-submit="cadastraResposta($event)">
+
+                <div class="item item-input-inset">
+                   <label class="item-input-wrapper">
+                     <input type="text" name="resposta" placeholder="Responder Comentário" id="">
+                   </label>
+                    
+                <input type="hidden" name="comentarios_servicos_id" id="comentarios_servicos_id" value="{{comentario.comentarios_servicos_id}}">
+
+                 <input type="hidden" name="servico" value="{{servico}}">
+
+                <input type="hidden" name="token" value="{{token}}">
+
+                   <button type="submit" class="button button-small activated">
+                     Enviar
+                   </button>
+                 </div>
+
+
+                </form>
+
+
+                <div class="list card" ng-repeat="resposta in comentario.respostas | orderBy:'-respostas_comentarios_id'">
+               
+                    <div class="item item-avatar">
+                        <img src="{{resposta.users.imagem | concatenaservidor}}">
+                        <h2>{{resposta.users.nome}}</h2>
+                        <p>{{resposta.users.email}}</p>
+
+                    </div>
+
+                    <div class="item item-body">
+
+                        <p>
+                            {{resposta.comentario}}
+                        </p>
+
+                       
+
+                    </div>
+
+                </div>
+
+               
+
+            </div>
+
+        </div>
+
+</div>
+    </div>
+
+</ion-content>
+</ion-view>

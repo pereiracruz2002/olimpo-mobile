@@ -1,0 +1,19 @@
+<div class="list card" ng-show="noticia.text">
+
+    <div class="item item-avatar">
+        <img ng-src="{{noticia.picture}}">
+        <h2>{{noticia.author}}</h2>
+        <p>{{noticia.data}}</p>
+    </div>
+
+    <div class="item item-body">
+        <p ng-click="openLink(noticia.link)">{{noticia.text}}</p>
+        <p>
+            <a href="#" class="subdued">{{noticia.num_likes}} Gostaram</a>
+        </p>
+    </div>
+    <div class="item item-divider">
+       <button class="button button-light button-small icon ion-thumbsup" ng-click="gostei(noticia.id)"> Gostei</button> 
+       <button class="button button-light button-small icon ion-android-share-alt" ng-click="compartilhar(noticia.title, noticia.link)"> Compartilhar</button> 
+    </div>
+</div>

@@ -1,0 +1,116 @@
+<ion-view title="Editar Doação">
+<ion-content class="content has-header">
+
+<div class="list" ng-if="msg.length>0" >
+	<div >
+		<div class="list card">
+
+			<p ng-repeat="item in msg" class="item item-icon-left" href="#">
+				<i class="icon ion-alert-circled"></i>
+				{{item}}
+			</p>
+
+		</div>
+
+
+	</div>
+
+</div>
+
+<form id="editarAnimais" ng-submit="editar()" name="mainForm" novalidate>
+
+	<div class="list list-inset">
+		
+		<label class="item item-input item-stacked-label">
+			<span>Titulo</span>
+			<input type="text" name="titulo" ng-model="doacao.titulo" id="titulo" placeholder="Digite um titulo para doação" required>
+		</label>
+
+		<span class="bloco" ng-show="mainForm.titulo.$invalid && !mainForm.titulo.$pristine">Digite um titulo</span>
+
+
+
+		<label class="item item-input item-stacked-label">
+			<span>Descrição</span>
+			<input type="text" name="descricao" ng-model="doacao.descricao" id="descricao" required placeholder="Digite uma descrição" value="{{animal.raca}}" required>
+		</label>
+
+		<span class="bloco" ng-show="mainForm.descricao.$invalid && !mainForm.descricao.$pristine">Digite uma descrição</span>
+
+
+		<label class="item item-input item-select">
+
+		    <div class="input-label">
+		      Tipo
+		    </div>
+		
+
+		    <select name="tipo" id="tipo" ng-model="doacao.tipo" required>
+		        <option value="">Selecione o tipo</option>
+		        <option value="{{tipo.tipos_id}}" ng-repeat="tipo in tipos">{{tipo.nome}}</option>
+		    </select>
+
+		</label>
+
+		<span class="bloco" ng-show="mainForm.tipo.$invalid && !mainForm.tipo.$pristine">Selecione um tipo</span>
+
+
+
+		<label class="item item-input item-select">
+
+		    <div class="input-label">
+		      Categoria
+		    </div>
+		
+
+		    <select name="categoria" id="categoria" ng-model="doacao.categoria" required >
+		        <option value="">Selecione a categoria</option>
+		        <option value="{{categoria.categorias_doacao_id}}" ng-repeat="categoria in categorias">{{categoria.nome}}</option>
+		    </select>
+
+		</label>
+
+		<span class="bloco" ng-show="mainForm.categoria.$invalid && !mainForm.categoria.$pristine">Selecione uma categoria</span>
+
+
+		<label class="item item-input item-select">
+
+		    <div class="input-label">
+		      Status
+		    </div>
+
+		    <select name="status" id="status" ng-model="doacao.status" required>
+		    	<option value="">Status</option>
+		    	<option value="Ativo">Ativo</option>
+		    	<option value="Inativo">Inativo</option>
+		    </select>
+		
+
+		</label>
+
+		 <span class="bloco" ng-show="mainForm.status.$invalid && !mainForm.status.$pristine">Selecione o Status</span>
+
+
+		
+
+
+		<figure ng-if="doacao.imagem != ''">
+			<img src="{{doacao.imagem | concatenaservidor}}" alt="">
+		</figure>
+		
+		<button ng-click="imagem()" type="button" class="button button-block button-assertive activated">Adicionar Imagem</button>
+
+		<input type="hidden" name="imagem" id="imagem">
+
+		<input type="hidden" name="_method" value="PUT">
+
+		<input type="hidden" name="doacoes_id" value="{{doacoes_id}}">
+
+		<input type="hidden" name="users_id" id="users_id" value="{{token}}">
+		<button  type="submit" ng-disabled="mainForm.$invalid" class="button button-block button-positive activated">Editar</button>
+	</div>
+</form>
+
+</ion-content>
+
+</ion-view>

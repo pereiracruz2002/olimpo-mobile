@@ -1,0 +1,64 @@
+<ion-view  title="Encontros">
+<ion-content class="content has-header">
+
+	<div ng-if="animais.length == 0">
+		<div class="card"  >
+			<div class="item item-text-wrap">
+				Nenhuma Combinação Encontrada
+			</div>
+		</div>
+		<div id="mensagemEncontros">
+			<p>Hey!</p>
+			<i class="icon ion-heart-broken"></i>
+
+			<a href="#/app/animais" class="button button-block button-positive">
+				Procure mais >>
+			</a>
+		</div>
+	</div>
+
+
+<div class="animal">
+
+	<div class="list card" ng-if="animais.length > 0">
+
+	  <div class="item item-avatar">
+	    <img src="{{animal.imagemdono | concatenaservidor}}" alt="">
+	    <h2>{{animal.dono}}</h2>
+	   
+	  </div>
+
+	  <div class="item item-image">
+	   <img src="{{animal.imagem | concatenaservidor}}" alt="">
+
+	  </div>
+
+	  <div class="item item-body" id="container-info-animal">
+
+	  	<p>Nome:{{animal.nome}}</p>
+	  	<p>Raça:{{animal.raca}}</p>
+
+	  	<i class="icon ion-heart" ng-click="par(animal.animais_id)"></i>
+
+	  	<i  ng-click="descartar(animal.animais_id)" class="icon ion-android-close"></i>
+
+	  	
+	  </div>
+
+	  
+
+
+	</div>
+
+	
+	
+</div>
+
+
+
+
+</ion-content>
+
+</ion-view>
+
+

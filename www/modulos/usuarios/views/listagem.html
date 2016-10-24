@@ -1,0 +1,24 @@
+<div class="bar bar-header bar-positive">
+    <h1 class="title">Serviços</h1>
+</div>
+<ion-content class="content has-header">
+
+        <div class="card"  ng-if="usuarios.length == 0">
+            <div class="item item-text-wrap">
+                {{msg}}
+            </div>
+        </div>
+
+    <div class="col text-center" ng-show="loading"><ion-spinner icon="spiral"></ion-spinner></div>
+    <div ng-repeat="empresa in empresas" class="list ">
+
+        <a class="item item-avatar" href="#/app/usuarios/detalhe/{{empresa.empresas_id}}">
+
+            <img src="{{empresa.logo | concatenaservidor}">
+            <h2>{{empresa.nome_fantasia}}</h2>
+            <p>{{empresa.email}}</p>
+        </a>
+    </div>
+</ion-content>
+
+

@@ -1,0 +1,87 @@
+<ion-view  title="Meus Dados">
+    <ion-content class="has-header">
+        <div ng-if="msg.length>0">
+            <div class="list card">
+
+                <p ng-repeat="item in msg" class="item item-icon-left" href="#">
+                    <i class="icon ion-alert-circled"></i>
+                    {{item}}
+                </p>
+
+            </div>
+
+
+        </div>
+        <form id="form-editar" name="mainForm" ng-submit="editar()" >
+            <div class="row">
+                <div class="col-50">
+                    <div class="list list-inset text-center">
+                        <label class="item" ng-if="user.imagem != ''">
+                            <p ng-show="loading_img"><ion-spinner icon="spiral"></ion-spinner></p>
+                            <img src="{{user.imagem | concatenaservidor}}" ng-hide="loading_img" style="max-width:100%; margin-bottom: -5px;">
+                        </label>
+                        <button ng-click="imagem()" type="button" class="button button-full button-energized"><i class="icon ion-ios-camera"></i> Alterar Foto</button>
+                        <input type="hidden" name="token" value="{{token}}">
+                        <input type="hidden" name="imagem" id="imagem">
+                        <button  type="submit" ng-disabled="mainForm.$invalid"  class="button button-full button-positive">Salvar <i class="icon "></i></button>
+                    </div>
+                </div>
+                <div class="col-50">
+                    <div class="list list-inset">
+                      <label class="item item-input item-stacked-label">
+                        <span class="input-label">Nome</span>
+                        <input type="text" name="nome" ng-model="user.nome" required value="{{user.nome}}">
+                      </label>
+                      <label class="item item-input item-stacked-label">
+                        <span class="input-label">E-mail</span>
+                          <input type="email" name="email" ng-model="user.email" required value="{{user.email}}">
+                      </label>
+
+                      <label class="item item-input item-stacked-label">
+                        <span class="input-label">CPF</span>
+                          <input type="tel" name="cpf" ng-model="user.cpf" required value="{{user.cpf}}">
+                      </label>
+
+                      <label class="item item-input item-stacked-label">
+                        <span class="input-label">Apelido</span>
+                        <input type="text" name="apelido"  ng-model="user.apelido" value="{{user.apelido}}">
+                      </label>
+                    </div>
+                </div>
+            </div>
+            <div class="list card">
+                <div class="item item-divider">
+                    Dados de Endereço
+                </div>
+
+                <div class="list">
+                    <label class="item item-input item-stacked-label">
+                      <span class="input-label">CEP</span>
+                      <input type="tel" name="cep" id="cep" ng-blur="resgataEndereco()"  ng-model="user.cep" required value="{{user.cep}}" ui-mask="99999-999">
+                    </label>
+
+                    <label class="item item-input item-stacked-label">
+                      <span class="input-label">Logradouro</span>
+                      <input type="text" name="endereco" id="endereco" ng-model="user.endereco" required value="{{user.endereco}}">
+                    </label>
+
+                    <label class="item item-input item-stacked-label">
+                      <span class="input-label">Bairro</span>
+                      <input type="text" name="bairro" id="bairro" ng-model="user.bairro" required value="{{user.bairro}}">
+                    </label>
+
+                    <label class="item item-input item-stacked-label">
+                      <span class="input-label">Cidade</span>
+                      <input type="text" name="cidade" id="cidade" ng-model="user.cidade" required value="{{user.cidade}}">
+                    </label>
+
+                    <label class="item item-input item-stacked-label">
+                      <span class="input-label">Estado</span>
+                      <input type="text" name="estado" id="estado" maxlength="2" ng-model="user.estado" required value="{{user.estado}}">
+                    </label>
+
+                </div>   
+        </form>
+    </ion-content>
+
+</ion-view>

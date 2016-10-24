@@ -1,0 +1,30 @@
+<ion-view title="Lista de Conversas">
+    <form id="filtrar"  ng-submit="filtrar()" class="bar bar-subheader">
+        <label class="item item-input item-select">
+            <i class="icon ion-funnel placeholder-icon"></i>
+            Tipo da Conversa
+            <select name="tipo" id="tipo" ng-model="myModel.tipo">
+                <option value="doacões">Doação</option>
+                <option value="serviços">Serviços</option>
+            </select>
+        </label>
+    </form>
+    <ion-content class="content has-subheader">
+        <div class="card"  ng-if="conversas.length == 0">
+            <div class="item item-text-wrap">
+                Nenhuma conversa disponível
+            </div>
+        </div>
+
+        <div class="col text-center" ng-show="loading"><ion-spinner icon="spiral"></ion-spinner></div>
+        <div id="listagemConversas"  ng-repeat="conversa in conversas">
+            <a class="item item-avatar" href="#/app/conversas/detalhes/{{conversa.participante_id}}/{{conversa.sala_id}}/{{conversa.sala_tipo}}">
+                <img ng-src="{{conversa.participante_imagem | concatenaservidor}}">
+                <h2>{{conversa.participante}}</h2>
+                <p><span class="item-note">({{conversa.tipo}})</span> {{conversa.ultima_msg}}</p>
+                <span class="badge badge-balanced" ng-show="conversa.novas > 0">{{conversa.novas}}</span>
+            </a>
+        </div>
+    </ion-content>
+</ion-view>
+

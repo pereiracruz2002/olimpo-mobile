@@ -1,0 +1,40 @@
+<ion-view  title="Iniciar Conversa">
+
+    <ion-content>
+
+        <div id="container-logado">
+            <div ng-if="msg.length>0">
+                <div class="list card">
+
+                    <p ng-repeat="item in msg" class="item item-icon-left" href="#">
+                        <i class="icon ion-alert-circled"></i>
+                        {{item}}
+                    </p>
+
+                </div>
+
+
+            </div>
+            <div class="list">
+                <form id="inicioConversa">
+                    <label class="item item-input">
+                        <textarea name="mensagem" ng-model="campos.texto" id="texto" placeholder="Digite sua mensagem" rows="5"></textarea>
+                    </label>
+
+
+
+                    <input type="hidden" name="users_id" id="users_id" value="{{user_id}}">
+
+                    <input type="hidden" name="users_id_conversa" id="users_id_conversa" value="{{id}}">
+
+                    <button ng-click="cadastrar()" class="button button-block button-positive activated">
+                        Enviar
+                    </button>
+                </form>
+            </div>
+        </div>
+
+<rodape></rodape>
+
+</ion-content>
+</ion-view>

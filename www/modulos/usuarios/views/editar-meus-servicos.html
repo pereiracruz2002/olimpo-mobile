@@ -1,0 +1,131 @@
+<ion-view title="Editar Serviço">
+<ion-content class="content has-header">
+
+<div class="list" ng-if="msg.length>0" >
+	<div >
+		<div class="list card">
+
+			<p ng-repeat="item in msg" class="item item-icon-left" href="#">
+				<i class="icon ion-alert-circled"></i>
+				{{item}}
+			</p>
+
+		</div>
+
+
+	</div>
+</div>
+
+<form id="cadastroServico" name="mainForm" ng-submit="editar()" >
+
+	<div class="list list-inset">
+		
+		<!--<label class="item item-input">-->
+			<!--CNPJ:-->
+			<!--<input type="text" name="cnpj" id="cnpj"  required ng-model="servico.cnpj"  ui-mask="99.999.999/9999-99" >-->
+		<!--</label>-->
+
+		<!--<span class="bloco" ng-show="mainForm.cnpj.$invalid && !mainForm.cnpj.$pristine">CNPJ obrigatório</span>-->
+
+		<label class="item item-input item-stacked-label">
+			<span>Descrição</span>
+			<textarea name="descricao" id="descricao" required ng-model="servico.descricao" cols="30" rows="5" placeholder="Digite a descrição do serviço">{{servico.descricao}}</textarea>
+		</label>
+
+		<span class="bloco" ng-show="mainForm.descricao.$invalid && !mainForm.descricao.$pristine">Descrição obrigatória</span>
+
+		<!--<label class="item item-input">-->
+			<!--<textarea name="endereco" id="endereco" required ng-model="servico.enderecos.endereco" cols="30" rows="5" placeholder="Endereço">{{servico.enderecos.endereco}}</textarea>-->
+		<!--</label>-->
+
+		<!--<span class="bloco" ng-show="mainForm.endereco.$invalid && !mainForm.endereco.$pristine">Endereço obrigatória</span>-->
+
+		<!--<label class="item item-input">-->
+			<!--<input type="text" name="bairro" id="bairro" placeholder="Bairro" required ng-model="servico.enderecos.bairro" value="{{servico.enderecos.bairro}}">-->
+		<!--</label>-->
+
+		<!--<span class="bloco" ng-show="mainForm.bairro.$invalid && !mainForm.bairro.$pristine">Bairro obrigatório</span>-->
+
+		<!--<label class="item item-input">-->
+			<!--<input type="text" name="complemento" id="complemento" placeholder="Complemento" value="{{servico.enderecos.complemento}}">-->
+		<!--</label>-->
+
+
+		<!--<label class="item item-input">-->
+			<!--<input type="text" name="cidade" id="cidade" required placeholder="Cidade" ng-model="servico.enderecos.cidade" value="{{servico.enderecos.cidade}}">-->
+		<!--</label>-->
+
+		<!--<span class="bloco" ng-show="mainForm.cidade.$invalid && !mainForm.cidade.$pristine">Cidade obrigatório</span>-->
+
+		<!--<label class="item item-input">-->
+			<!--<input type="text" name="estado" id="estado" required placeholder="Estado" ng-model="servico.enderecos.estado" value="{{servico.enderecos.estado}}">-->
+		<!--</label>-->
+
+		<!--<span class="bloco" ng-show="mainForm.estado.$invalid && !mainForm.estado.$pristine">Estado obrigatório</span>-->
+
+
+
+		<!--<label class="item item-input">-->
+			<!--CEP:-->
+			<!--<input type="text" name="cep" id="cep"  ui-mask="99999-999" required ng-model="servico.enderecos.cep" value="{{servico.enderecos.cep}}">-->
+		<!--</label>-->
+
+		<!--<span class="bloco" ng-show="mainForm.cep.$invalid && !mainForm.cep.$pristine">CEP obrigatório</span>-->
+
+		<!--<label class="item item-input">-->
+			<!--Telefone:-->
+			<!--<input type="text" name="telefone" id="telefone"  ui-mask="(099)9999-9999" required ng-model="servico.enderecos.telefone" value="{{servico.enderecos.telefone}}">-->
+		<!--</label>-->
+
+		<!--<span class="bloco" ng-show="mainForm.telefone.$invalid && !mainForm.telefone.$pristine">Telefone obrigatório</span>-->
+
+		<!--<label class="item item-input">-->
+			<!--Celular:-->
+			<!--<input type="text" name="celular" id="celular" ng-model="servico.enderecos.celular" ui-mask="(099)99999-999?9" value="{{servico.enderecos.celular}}">-->
+		<!--</label>-->
+
+
+
+
+	
+
+
+		  <label class="item item-input item-select">
+		    <div class="input-label">
+		      Tipo
+		    </div>
+		    <select name="tipos_id" id="tipos_id" required ng-model="servico.servicos.tipos_id" ng-change="preencheServicos()">
+				<option value="">Selecione o tipo de animal</option>
+				<option value="{{tipo.tipos_id}}" ng-repeat="tipo in tipos" >{{tipo.nome}}</option>
+			</select>
+		  </label>
+
+		  <span class="bloco" ng-show="mainForm.tipos_id.$invalid && !mainForm.tipos_id.$pristine">Tipo obrigatório</span>
+
+
+
+		<div class="list">
+
+		  <label class="item item-input item-select">
+		    <div class="input-label">
+		      Serviços
+		    </div>
+		    <select name="servicos_id" required id="servicos_id" ng-model="servico.servicos_id">
+		    		<option value="">Selecione o serviço</option>
+		    		<option value="{{servico.servicos_id}}" ng-repeat="servico in servicos">{{servico.nome}}</option>
+		    	</select>
+		  </label>
+
+		</div>
+
+		 <span class="bloco" ng-show="mainForm.servicos_id.$invalid && !mainForm.servicos_id.$pristine">Serviço obrigatório</span>
+
+		<input type="hidden" name="user_servico_id" value="{{servico.users_servicos_id}}">
+		<input type="hidden" name="users_id" id="users_id" value="{{token}}">
+		<button type="submit" ng-disabled="mainForm.$invalid" class="button button-block button-positive activated">Salvar</button>
+	</div>
+</form>
+
+</ion-content>
+</ion-view>
+

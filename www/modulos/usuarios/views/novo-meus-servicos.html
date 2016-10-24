@@ -1,0 +1,62 @@
+<ion-view  title="Novo Serviço">
+<ion-content class="content has-header">
+
+<div class="list" ng-if="msg.length>0" >
+	<div >
+		<div class="list card">
+
+			<p ng-repeat="item in msg" class="item item-icon-left" href="#">
+				<i class="icon ion-alert-circled"></i>
+				{{item}}
+			</p>
+
+		</div>
+
+
+	</div>
+</div>
+
+<form id="cadastroServico" name="mainForm" ng-submit="cadastrar()">
+
+	<div class="list list-inset">
+		<label class="item item-input item-stacked-label">
+			<span>Descrição</span>
+			<textarea name="descricao" id="descricao" required ng-model="servico.descricao" cols="30" rows="5" placeholder="Digite a descrição do serviço"></textarea>
+		</label>
+
+		<span class="bloco" ng-show="mainForm.descricao.$invalid && !mainForm.descricao.$pristine">Descrição obrigatória</span>
+
+
+		<label class="item item-input item-select">
+		    <div class="input-label">
+		      Tipo
+		    </div>
+		    <select name="tipos_id" id="tipos_id" ng-model="item.seleciona" ng-change="preencheServicos()" required>
+				<option value="">Selecione o tipo de animal</option>
+				<option value="{{tipo.tipos_id}}" ng-repeat="tipo in tipos" >{{tipo.nome}}</option>
+			</select>
+			
+		  </label>
+		  <span class="bloco" ng-show="mainForm.tipos_id.$invalid && !mainForm.tipos_id.$pristine">Tipo Obrigatório</span>
+
+
+		  <label class="item item-input item-select">
+		    <div class="input-label">
+		      Serviços
+		    </div>
+		    <select name="servicos_id" id="servicos_id" ng-model="servico.servicos_id" required>
+				<option value="">Selecione o serviço</option>
+				<option value="{{servico.servicos_id}}" ng-repeat="servico in servicos">{{servico.nome}}</option>
+			</select>
+			
+		  </label>
+		  <span class="bloco" ng-show="mainForm.servicos_id.$invalid && !mainForm.servicos_id.$pristine">Serviço Obrigatório</span>
+
+		<input type="hidden" name="empresas_id" id="empresas_id" value="{{empresas_id}}">
+		<button  type="submit" ng-disabled="mainForm.$invalid" class="button button-block button-positive activated">Cadastrar</button>
+	</div>
+</form>
+
+</ion-content>
+</ion-view>
+

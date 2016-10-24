@@ -1,0 +1,58 @@
+<ion-view  title="{{participante.nome}}">
+    <div class="bar bar-bigfooter">
+        <form id="cadastroMensagem" style="width:100%;">
+            <div class="row">
+                <div class="col-90">
+                    <textarea name="mensagem" ng-model="campos.texto" id="texto" placeholder="Digite sua mensagem" rows="3"></textarea>
+                    <input type="hidden" name="salas_id" id="salas_id" value="{{id_conversa}}">
+                    <input type="hidden" name="users_id" id="users_id" value="{{user_id}}">
+                </div>
+                <div class="col-10">
+                    <button ng-click="cadastrar()" class="button icon ion-paper-airplane button-positive"></button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <ion-content class="has-bigfooter">
+        <div id="container-logado">
+            <div class="card"  ng-if="mensagens.length == 0">
+                <div class="item item-text-wrap">
+                    Nenhuma mensagem
+                </div>
+            </div>
+            </div>
+
+            <div class="col text-center" ng-show="loading"><ion-spinner icon="spiral"></ion-spinner></div>
+
+            <div id="listagemConversas" class="list">
+                <div ng-repeat="conversa in mensagens track by $index">
+                    <div ng-if="!conversa.me" class="row mensagem">
+                        <div class="col-90">
+                            <div class="card">
+                                <p class="item item-divider item-text-wrap">{{conversa.mensagem}}</p>
+                                <p class="item item-divider item-footer text-right">
+                                    <small>{{conversa.created_at | formata_datetime}} 
+                                    </small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div ng-if="conversa.me" class="row mensagem me">
+                        <div class="col-90 col-offset-10">
+                            <div class="card">
+                                <p class="item item-text-wrap msg-bg">{{conversa.mensagem}}</p>
+                                <div class="item item-divider item-footer text-right">
+                                    <small>{{conversa.created_at | formata_datetime}}</small>
+                                </div>
+                            </div>
+                            <div class="text-right status-msg">
+                                <span class="ion" ng-class="(conversa.lida ? 'ion-ios-paw positive' : 'ion-ios-paw')"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

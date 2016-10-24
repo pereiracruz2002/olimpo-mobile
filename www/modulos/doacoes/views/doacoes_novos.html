@@ -1,0 +1,107 @@
+<ion-view title="Cadastrar Doação">
+<ion-content class="content has-header">
+
+
+
+        <form id="cadastroDoacoes" ng-submit="cadastrar()" name="mainForm" novalidate>
+
+        <div  ng-if="msg.length > 0" >
+            <div >
+                <div class="list card">
+
+                    <p ng-repeat="item in msg" class="item item-icon-left" href="#">
+                        <i class="icon ion-alert-circled"></i>
+                        {{item}}
+                    </p>
+
+                </div>
+
+
+            </div>
+            </div>
+
+            <div class="list list-inset">
+
+                <label class="item item-input item-stacked-label">
+                    <span>Titulo</span>
+                    <input type="text" name="titulo" id="titulo" ng-model="titulo" placeholder="Digite um titulo para doação" required>
+                </label>
+
+                <span class="bloco" ng-show="mainForm.titulo.$invalid && !mainForm.titulo.$pristine">Digite um titulo</span>
+
+                <label class="item item-input item-stacked-label">
+                    <span>Descrição</span>
+                    <input type="text" name="descricao" id="descricao" ng-model="descricao" required placeholder="Digite uma descrição" required>
+                </label>
+
+                <span class="bloco" ng-show="mainForm.descricao.$invalid && !mainForm.descricao.$pristine">Digite uma descrição</span>
+
+
+
+                <label class="item item-input item-select">
+
+                    <div class="input-label">
+                      Tipo
+                    </div>
+        
+
+                    <select name="tipo" id="tipo" ng-model="tipo" required>
+                        <option value="">Selecione o tipo</option>
+                        <option value="{{tipo.tipos_id}}" ng-repeat="tipo in tipos">{{tipo.nome}}</option>
+                    </select>
+
+                </label>
+
+                <span class="bloco" ng-show="mainForm.tipo.$invalid && !mainForm.tipo.$pristine">Selecione um tipo</span>
+
+
+                <label class="item item-input item-select">
+
+                    <div class="input-label">
+                      Categoria
+                    </div>
+                
+
+                    <select name="categoria" id="categoria" ng-model="categoria" required >
+                        <option value="">Selecione a categoria</option>
+                        <option value="{{categoria.categorias_doacao_id}}" ng-repeat="categoria in categorias">{{categoria.nome}}</option>
+                    </select>
+
+                </label>
+
+                <span class="bloco" ng-show="mainForm.categoria.$invalid && !mainForm.categoria.$pristine">Selecione uma categoria</span>
+
+                <label class="item item-input item-select">
+
+                    <div class="input-label">
+                      Status
+                    </div>
+                
+
+                    <select name="status" id="status" ng-model="status" required>
+                        <option value="">Status</option>
+                        <option value="Ativo">Ativo</option>
+                        <option value="Inativo">Inativo</option>
+                    </select>
+
+                </label>
+
+                 <span class="bloco" ng-show="mainForm.status.$invalid && !mainForm.status.$pristine">Selecione o Status</span>
+
+          
+
+
+
+                <button ng-click="imagem()" type="button" class="button button-block button-assertive activated">Adicionar Imagem</button>
+
+                <input type="hidden" name="imagem" id="imagem">
+
+                <!--<input type="hidden" name="_method" value="PUT" >-->
+
+                <input type="hidden" name="users_id" id="users_id" value="{{token}}">
+                <button type="submit"  ng-disabled="mainForm.$invalid" class="button button-block button-positive activated">Cadastrar</button>
+            </div>
+        </form>
+
+</ion-content>
+</ion-view>

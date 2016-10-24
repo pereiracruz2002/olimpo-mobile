@@ -1,0 +1,93 @@
+<ion-view  title="Minha Lista de Doações">
+
+<ion-content class="content has-header">
+
+
+
+<div class="row">
+  <a href="#/app/doacoes/novo" class="button button-energized corpadrao" >
+    Cadastrar
+  </a>
+
+</div>
+
+
+<div class="card"  ng-if="minhasDoacoes.length == 0">
+  <div class="item item-text-wrap">
+   Nenhuma doação cadastrada
+  </div>
+</div>
+</div>
+
+<div class="col text-center" ng-show="loading"><ion-spinner icon="spiral"></ion-spinner></div>
+
+
+<div class="list card" id="listagem-solicitacoes" ng-repeat="doacao in minhasDoacoes">
+
+
+<div class="row">
+  <div class="col  col-center"><p>{{doacao.titulo}}</p></div>
+</div>
+
+  <div class="row header ">
+    <div class="col col-25 col-center">Editar</div>
+    <div class="col col-25 col-center">Excluir</div>
+    <div class="col col-25 col-center">Status</div>
+    <div class="col col-25 col-center">Interesses</div>
+  </div>
+
+
+  <div class="row " >
+    
+    <div class="col col-25 col-center">
+      <a class="item item-icon-center" href="#/app/doacoes/editar/{{doacao.doacoes_id}}" ><i class="icon ion-edit"></i></a>
+    </div>
+    <div class="col col-25 col-center">
+      <a class="item item-icon-center" href="#" ng-click="excluir(doacao.doacoes_id)"><i class="icon ion-trash-a"></i></a>
+    </div>
+
+ 
+    <div class="col col-25 col-center">
+      <label class="toggle toggle-assertive" ng-if="doacao.status == 'Ativo'">
+        <input type="checkbox"  ng-click="alterarStatus(doacao.doacoes_id)" id="tipo" checked="checked" >
+        <div class="track">
+          <div class="handle"></div>
+        </div>
+      </label>
+
+      <label class="toggle toggle-assertive" ng-if="doacao.status == 'Inativo'">
+        <input type="checkbox"  ng-click="alterarStatus(doacao.doacoes_id)" id="tipo" >
+        <div class="track">
+          <div class="handle"></div>
+        </div>
+      </label>
+    </div>
+
+    <div class="col col-25 col-center">
+      <a class="item item-icon-center" href="#/app/doacoes/interessados/{{doacao.doacoes_id}}" ><i class="icon ion-ios-people"></i></a>
+    </div>
+  </div>
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+</ion-content>
+</ion-view>
+

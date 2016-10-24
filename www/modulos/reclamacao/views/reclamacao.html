@@ -1,0 +1,83 @@
+<ion-view  title="Nova Reclamação">
+    <ion-content class="content has-header">
+
+        <div class="list" ng-if="msg.length>0" >
+            <div >
+                <div class="list card">
+
+                    <p ng-repeat="item in msg" class="item item-icon-left" href="#">
+                        <i class="icon ion-alert-circled"></i>
+                        {{item}}
+                    </p>
+
+                </div>
+
+
+            </div>
+        </div>
+
+        <form id="cadastroReclamacao" name="mainForm" ng-submit="cadastrar()">
+
+            <div class="list list-inset">
+      
+
+               <input ion-autocomplete type="text" readonly="readonly" class="ion-autocomplete" autocomplete="off" ng-model="model" items-method="callbackMethod(query,true)"  item-view-value-key="name" max-selected-items="1" select-items-label="Selecione uma empresa" placeholder="Procure uma empresa" name="empresa" items-clicked-method="clickedMethod(callback)"/>
+
+               <input type="hidden" name="empresas_id" id="empresas_id" value="" />
+                
+                
+                  
+            </div>
+
+
+
+               
+                <span class="bloco" ng-show="mainForm.cnpj.$invalid && !mainForm.cnpj.$pristine">CNPJ obrigatório</span>
+
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">CNPJ</span>
+                    <input type="text" name="cnpj" id="cnpj" required ui-mask-placeholder-char="_" ui-mask="99.999.999/9999-99" ng-model="reclamacao.cnp"  value="{{reclamacao.cnpj}}">
+                </label>
+
+
+                <span class="bloco" ng-show="mainForm.cnpj.$invalid && !mainForm.cnpj.$pristine">CNPJ obrigatório</span>
+
+
+
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Assunto</span>
+                    <input type="text" name="assunto" id="assunto" required ng-model="reclamacao.assunto"  value="{{reclamacao.assunto}}" placeholder="Digite o assunto">
+                </label>
+
+
+                <span class="bloco" ng-show="mainForm.assunto.$invalid && !mainForm.assunto.$pristine">Assunto obrigatório</span>
+
+
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Site</span>
+                    <input type="text" name="site" id="site" placeholder="Site" required>
+                </label>
+
+
+                <span class="bloco" ng-show="mainForm.site.$invalid && !mainForm.site.$pristine">Site obrigatório</span>
+
+
+
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Reclamação</span>
+                    <textarea name="texto" id="texto" cols="30" ng-model="reclamacao.texto" rows="5" placeholder="Digite sua reclamação" required ></textarea>
+                   
+                </label>
+
+
+                <span class="bloco" ng-show="mainForm.reclamacao.$invalid && !mainForm.reclamacao.$pristine">Reclamação obrigatório</span>
+
+
+                <input type="hidden" name="token" id="token" value="{{token}}">
+                <button  type="submit" ng-disabled="mainForm.$invalid" class="button button-block button-positive activated">Cadastrar</button>
+            </div>
+        </form>
+
+    </ion-content>
+</ion-view>
+

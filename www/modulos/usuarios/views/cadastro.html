@@ -1,0 +1,77 @@
+<ion-view>
+    <div class="bar bar-header bar-positive">
+        <a href="#/" class="button button-icon icon ion-ios-arrow-left"></a>
+        <h1 class="title">Cadastre-se</h1>
+    </div>
+
+    <ion-content  class="content has-header">
+    <div class="cover">
+        <div class="padding">
+            <div class="row text-center">
+                <div class="col-offset-10 col-80">
+                    <img src="img/logo.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="padding">
+            <div class="row item-avatar">
+                <div class="col-33 text-center positive">
+                    <h3><span class="energized-bg h1 padding icon-rounded"><i class="icon ion-ios-heart"></i></span></h3>
+                    <p>Encontre um par para o seu pet</p>
+                </div>
+                <div class="col-33 text-center positive">
+                    <h3><span class="energized-bg h1 padding icon-rounded"><i class="icon ion-ios-heart"></i></span></h3>
+                    <p>Encontre órimos serviços</p>
+                </div>
+
+                <div class="col-33 text-center positive">
+                    <h3><span class="energized-bg h1 padding icon-rounded"><i class="icon ion-ios-heart"></i></span></h3>
+                    <p>Doe ou adote</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <form id="form-cadastro" name="mainForm" ng-submit="cadastrar()">
+            <div class="list list-inset">
+                <div ng-if="msg.length > 0">
+                    <div class="list card">
+                        <p ng-repeat="item in msg" class="item item-icon-left assertive" href="#">
+                            <i class="icon ion-alert-circled"></i>
+                            {{item}}
+                        </p>
+                    </div>
+                </div>
+
+                <label class="item item-input item-floating-label">
+                    <span class="input-label">Nome Completo</span>
+                    <input type="text" name="nome" ng-model="nome" placeholder="Nome Completo (Obrigatório)" ng-required="true">
+                    
+                    <div class="assertive text-right padding-horizontal text-small" ng-show="mainForm.nome.$invalid && !mainForm.nome.$pristine">Campo obrigatório</div>
+                </label>
+
+                <label class="item item-input item-floating-label">
+                    <span class="input-label">E-mail</span>
+                    <input type="email" name="email"  ng-model="email" placeholder="E-mail (Obrigatório)" ng-required="true">
+                    <div class="assertive text-right padding-horizontal text-small" ng-show="mainForm.email.$invalid && !mainForm.email.$pristine">Digite um email válido</div>
+                </label>
+                
+                <label class="item item-input item-floating-label">
+                    <span class="input-label">Senha</span>
+                    <input type="password" name="senha"  ng-model="senha" placeholder="Senha (Obrigatório)" ng-required="true">
+                    <div class="assertive text-right padding-horizontal text-small" ng-show="mainForm.senha.$invalid && !mainForm.senha.$pristine">Campo obrigatório</div>
+                </label>
+
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">CPF</span>
+                    <input type="tel" name="cpf"  ng-model="cpf"  ui-mask="999.999.999-99" cpf required>
+                    <div class="assertive text-right padding-horizontal text-small"><span ng-show="mainForm.cpf.$error.cpf">CPF inválido</span></div>
+                </label>
+                
+                <button type="submit" ng-disabled="mainForm.$invalid" class="button button-block button-positive">Cadastrar</button>
+            </div>   
+        </form>
+
+    </ion-content>
+</ion-view>
+

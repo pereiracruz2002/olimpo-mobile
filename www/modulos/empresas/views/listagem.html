@@ -1,0 +1,50 @@
+<ion-view title="Empresas" >
+
+
+<ui-view >
+    <ion-content class="content has-header">
+
+        <a href="#/app/empresas" style="margin-top:10px;margin-left:10px" class="button button-energized icon-left ion-plus">Novo</a>
+
+        <div class="row" >
+            <div class="card"  ng-if="servicos.length == 0">
+                <div class="item item-text-wrap">
+                    Nenhuma Empresa Encontrado
+                </div>
+            </div>
+        </div>
+
+
+    <div class="col text-center" ng-show="loading"><ion-spinner icon="spiral"></ion-spinner></div>
+
+
+
+        <div ng-repeat="empresa in empresas" class="list card">
+
+            <div class="item">
+
+                <div class="row">
+                <div class="col-50" id="nomeEmpresa">
+                {{empresa.nome_fantasia}}
+                </div>
+                <!--<a href="#/app/meus-servicos/novo/{{empresa.empresas_id}}" class="button button-positive">-->
+                <div class="col-50">
+                <a href="#/app/meus-servicos/listagem/{{empresa.empresas_id}}" class="button button-positive">
+                    <i class="icon ion-wrench"></i>
+                </a>
+                <a class="button button-positive" href="#/app/empresas/editar/{{empresa.empresas_id}}"><i class="icon ion-edit"></i> </a>
+                <a class="button button-positive" ng-click="excluir({{empresa.empresas_id}})" ><i class="icon ion-trash-a"></i> </a>
+
+                </div>
+            </div>
+
+        </div>
+
+    </ion-content>
+
+</ui-view>
+</ion-view>
+
+
+
+

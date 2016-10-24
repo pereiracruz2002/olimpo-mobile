@@ -1,0 +1,53 @@
+<nav  id="navbar">
+
+
+	<div id="menu-header">
+
+	<div class="row">
+
+		<div class="col-30" id="logo">
+		<a href="#/posts/" ng-click="fechaMenu()"><img src="img/logo.png" alt=""></a>
+		</div>
+
+		<div class="col-30" id="btn-menu">
+		<img src="img/btn-menu.png" ng-click="abreMenu()" alt="">
+		</div>
+
+		<div class="col-60" id="links" >
+            <ul>
+                <li><a href="#/usuarios/perfil/{{user.users_id}}" ng-click="fechaMenu()"><img src="img/btn-menu1.png" alt="Meu Perfil"></a></li>
+                <li><a href="#/usuarios/mensagens/{{user.users_id}}" ng-click="fechaMenu()"><img src="img/btn-menu2.png" alt=""></a></li>
+                <li><a href="#/usuarios/galeria/{{user.users_id}}" ng-click="fechaMenu()"><img src="img/btn-menu3.png" alt=""></a></li>
+            </ul>
+
+		</div>
+	</div>
+
+	</div>
+
+	<div ng-if="user!=''" id="menu-conteudo">
+
+        <a ng-click="abreMenu()" class="button button-small pull-right icon ion-close"></a>
+        <div class="row" id="container-foto">
+            <div ng-repeat="imagem in user.imagem" class="col-90" >
+                <img ng-src="{{imagem.arquivo | concatenaservidor}}" ng-if="imagem.principal == 1">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-90">
+                <ul id="menu-links">
+                    <li><a ng-click="abreMenu()"  href="#/posts/" class="editar">Inicio</a></li>
+                    <li><a ng-click="abreMenu()" href="#/usuarios/{{user.users_id}}" class="editar">Editar Perfil</a></li>
+                    <li><a ng-click="abreMenu()"   href="#/usuarios/tags/{{user.users_id}}" class="editar">Prefêrencias</a></li>
+                    <li><a ng-click="abreMenu()"   href="#/usuarios/galeria/{{user.users_id}}" class="album">Album de Fotos</a></li>
+                    <li><a ng-click="abreMenu()"   href="#/usuarios/mensagens/{{user.users_id}}" class="mensagem">Mensagens</a></li>
+                    <li><a ng-click="abreMenu()"   href="#/eventos/" class="feed">Eventos</a></li>
+                    <li><a href="" ng-click="abreMenu();logout(); ">Sair</a></li>
+                </ul>
+            </div>
+        </div>
+
+	</div>
+
+</nav>

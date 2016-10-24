@@ -1,0 +1,240 @@
+/* Empty. Add your own CSS if you like */
+
+
+h1{
+	font-size: 20px;
+	font-family: arial;
+	font-weight: bold;
+}
+
+textarea{
+	width: 100% !important;
+	resize:none;
+
+}
+
+a{
+	text-decoration: none;
+}
+
+a.curtidasim{
+	color: rgb(88, 144, 255);
+	font-weight: bold;
+	
+}
+
+a.curtidanao{
+	color: #000;
+
+}
+
+#editarAnimais img{
+	width: 100%;
+}
+
+#container-info-animal .ion-heart{
+	font-size: 50px;
+	color: #f00;
+	float: left;
+
+}
+
+#container-info-animal .ion-android-close{
+	font-size: 50px;
+	
+	float: right;
+
+}
+
+#denuncias, .textearea{
+	z-index: 999999999999;
+	position: absolute;
+	width: 100%;
+	background: #fff;
+}
+
+#conversas{
+	height: 70vh;
+	overflow-x:hidden;
+	position: relative;
+	margin-bottom: 100px;
+}
+
+
+#enviaconversas{
+
+	width: 100%;
+	display: block;
+	position: fixed;
+	bottom: 0;
+	z-index: 99999999;
+	padding: 5px;
+	background-color: #fff;
+
+
+}
+
+#enviaconversas textarea{
+	width: 100%;
+}
+
+
+#menu-opcoes{
+	background: #000;
+	color: #fff;
+	text-align: right;
+	position: relative;
+}
+
+#menu-opcoes a{
+	display: inline-block;
+	color: #fff;
+	padding: 10px;
+	position: relative;
+}
+
+#menu-opcoes ul{
+	display: none;
+}
+
+
+#menu-opcoes ul{
+	position: absolute;
+	top: 100%;
+	right: 0;
+	background: #000;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	z-index: 99999999999999999;
+}
+
+#menu-opcoes ul li{
+	line-height: 30px;
+}
+
+#listagem-solicitacoes .item{
+	font-size: 25px !important;
+}
+
+#listagem-solicitacoes p{
+
+	max-width: 100%;
+
+ overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap
+
+}
+
+a.opcoes{
+	display: inline-block;
+	width:  31.333333333333336%;
+	text-align: center;
+	font-size: 10px;
+	margin-top: 10px;
+	color: #000 !important;
+}
+
+a.opcoes i{
+	color: #000;
+	display: block;
+	font-size: 25px;
+	text-align: center;
+
+}
+
+#conversas a h2{
+
+	font-size: 10px;
+
+}
+
+
+#conversas .item p{
+	overflow: none !important;
+	text-overflow: none !important;
+	white-space: normal;
+	font-size: 10px;
+	color: #000;
+	font-family: "Ubuntu",sans-serif;
+}
+
+#mensagem{
+	width: 100%;
+}
+
+
+#conversas .item.textos{
+	text-align: center;
+	font-size: 20px;
+	font-weight: bold;
+
+}
+
+#conversas .item.textos p{
+		color: #f00 !important;
+}
+
+span.bloco{
+	display: block;
+	width: 100%;
+	float: left;
+
+}
+
+#container-estrela{
+	text-align: right;
+	padding-right: 10px;
+}
+
+.estrela-favorito{
+	display: inline-block;
+	font-size: 35px;
+	
+}
+
+#quantidade{
+	position: relative;
+	z-index: 9999999999;
+
+}
+
+#quantidade i{
+	font-size: 40px;
+	color: #000;
+}
+
+#quantidade span{
+	position: absolute;
+    top: 9px;
+    left: 31%;
+    -ms-transform:translateX(-50%); /* IE 9 */
+    -webkit-transform:translateX(-50%); /* Chrome, Safari, Opera */
+    transform:translateX(-50%);
+    color: #f00;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#lista-notificacoes .visto{
+
+	background: #fff !important;
+
+}
+
+#lista-notificacoes .item p {
+
+	overflow: auto !important;
+	text-overflow: inherit !important;
+	white-space: normal !important;
+
+}
+
+
+.cover{
+    background:url('img/cover.png') no-repeat cover;
+}
+
+

@@ -1,0 +1,38 @@
+<ion-view title="Interessados na Doação">
+<ion-content class="content has-header">
+
+
+
+
+<h4>{{interessados[0].doacoes.titulo}}</h4>
+
+
+<div class="card"  ng-if="interessados.length == 0">
+  <div class="item item-text-wrap">
+   Nenhuma pessoa interessada na doação no momento
+  </div>
+</div>
+</div>
+
+<div class="col text-center" ng-show="loading"><ion-spinner icon="spiral"></ion-spinner></div>
+
+
+
+
+    <div  ng-repeat="interessado in interessados">
+
+        <div class="list">
+
+            <a class="item item-avatar" href="#/app/conversas/detalhes/{{interessado.users.users_id}}/{{interessado.salas_id}}/2">
+                <img src="{{interessado.users.imagem}}">
+                <h2>{{interessado.users.nome}}</h2>
+            </a>
+
+        </div>
+
+
+    </div>
+
+</ion-content>
+</ion-view>
+

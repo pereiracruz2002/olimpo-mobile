@@ -1,0 +1,43 @@
+
+<ion-view  title="Serviços Cadastrados">
+
+<ion-content class="content has-header">
+
+<a href="#/app/meus-servicos/novo/{{empresas_id}}" style="margin-top:10px;margin-left:10px" class="button button-energized icon-left ion-plus">Novo</a>
+
+
+
+
+<div class="card"  ng-if="animais.length == 0">
+  <div class="item item-text-wrap">
+   Nenhum serviço cadastrado
+  </div>
+</div>
+</div>
+
+<div class="col text-center" ng-show="loading"><ion-spinner icon="spiral"></ion-spinner></div>
+
+<div class="row" ng-repeat="servico in servicos">
+
+<div class="col" >
+
+
+		<div class="item ">
+			<h3>{{servico.servicos.nome}}</h3> 
+			<p>{{servico.descricao}}</p>        
+			   
+			<a class="button button-positive" href="#/app/meus-servicos/editar/{{servico.users_servicos_id}}/{{empresas_id}}"><i class="icon ion-edit"></i> </a>
+			<a class="button button-positive" ng-click="excluir({{servico.users_servicos_id}})" ><i class="icon ion-trash-a"></i> </a> 
+
+
+		</div>
+	</div>             
+
+</div>
+
+
+</ion-content>
+
+</ion-view>
+
+

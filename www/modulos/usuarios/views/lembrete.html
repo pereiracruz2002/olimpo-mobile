@@ -1,0 +1,54 @@
+<div class="bar bar-header bar-positive">
+    <button ng-click="goTo('login')" class="button button-icon icon ion-ios-arrow-left"></button>
+    <h1 class="title">Esqueceu sua Senha?</h1>
+</div>
+<ion-content class="content has-header">
+    <div class="cover">
+        <div class="padding">
+            <div class="row text-center">
+                <div class="col-offset-10 col-80">
+                    <img src="img/logo.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="padding">
+            <div class="item energized-bg item-icon-left item-text-wrap">
+                <i class="icon ion-email h1"></i>
+                Informe seu e-mail e enviaremos as instruções para você recuperar sua senha.
+            </div>
+
+        </div>
+    </div>
+
+    <div class="card" ng-show="erro">
+        <div class="item item-text-wrap assertive">
+            {{erro}}
+        </div>
+    </div>
+    <div class="card" ng-show="sucesso">
+        <div class="item item-text-wrap balanced">
+            {{sucesso}}
+        </div>
+    </div>
+
+
+    
+    <form name="mainForm">
+        <div class="list list-inset">
+            <label class="item item-input">
+                <input ng-model="myModel.email" type="email" placeholder="Digite seu Email" ng-required="true">
+            </label>
+
+            <div >
+                <button ng-click="recuperarSenha()" class="button button-full button-assertive" ng-hide="myModel.loading" ng-disabled="mainForm.$invalid">Recuperar senha <i class="icon ion-ios-paperplane"></i></button>
+            </div>
+
+            <div class="row">
+                <div class="col text-center" ng-show="myModel.loading"><ion-spinner icon="spiral"></ion-spinner></div>
+            </div>
+        </div>
+
+    </form>
+
+</ion-content>
+

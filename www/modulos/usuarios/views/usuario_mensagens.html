@@ -1,0 +1,35 @@
+<ion-view  title="Conversas">
+
+    <ion-content>
+
+
+        <div id="container-logado">
+
+            <div ng-repeat="mensagem in mensagens" class="list card">
+                <div class="item item-divider">
+                    Mensagens
+
+                </div>
+
+
+                <div ng-repeat="conversa in mensagem.conversas | orderBy:'-conversas_id' | limitTo:1 " class="list">
+
+                    <a class="item item-avatar"  href="#/app/conversas/detalhes/{{conversa.users.users_id}}/{{conversa.salas_id}}">
+                        <img ng-repeat="imagem in conversa.users.imagem" src="{{imagem.thumb}}" ng-if="id==conversa.users.users_id">
+
+                        <h2>{{conversa.users.apelido}}</h2>
+                        <p>{{conversa.mensagem}}</p>
+
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <rodape></rodape>
+
+    </ion-content>
+</ion-view>

@@ -1,0 +1,52 @@
+<ion-view title="Doação Detalhes">
+<ion-content class="content has-header">
+
+
+<div class="list card">
+
+ 
+
+  <div class="item item-body">
+   <img class="full-image" src="{{doacao.imagem | concatenaservidor}}">
+	<h1>{{doacao.titulo}}</h1>
+    <p>{{doacao.descricao}}</p>
+    <p>Doado por:{{doacao.users.nome}}</p>
+    <p>
+      <a ng-click="criarSala(doacao.doacoes_id,doacao.users.users_id)">Conversar</a>
+    </p>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+</ion-content>
+
+</ion-view>
+

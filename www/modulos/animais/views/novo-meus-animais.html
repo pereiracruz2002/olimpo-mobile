@@ -1,0 +1,167 @@
+<ion-view  title="Novo Animal">
+<ion-content class="content has-header">
+
+<div class="list" ng-if="msg.length>0" >
+	<div >
+		<div class="list card">
+			<p ng-repeat="item in msg" class="item item-icon-left" href="#">
+				<i class="icon ion-alert-circled"></i>
+				{{item}}
+			</p>
+		</div>
+	</div>
+</div>
+
+<form id="cadastroAnimais" name="mainForm" ng-submit="cadastrar()" >
+    <input type="hidden" name="users_id" id="users_id" value="{{token}}">
+    <div class="row">
+        <div class="col-33">
+            <div class="list list-inset text-center">
+                <p ng-show="loading_img"><ion-spinner icon="spiral"></ion-spinner></p>
+                <div ng-hide="loading_img">
+                    <label class="item text-center" ng-hide="myModel.imagem">
+                        <i class="ion ion-ios-paw calm" style="font-size:80px"></i>
+                    </label>
+                    <div class="item text-center" ng-show="myModel.imagem">
+                        <img ng-src="{{myModel.imagem | concatenaservidor}}" style="max-width:100%;" />
+                    </div>
+                </div>
+
+                <button ng-click="imagem()" type="button" class="button button-full button-energized"><i class="icon ion-ios-camera"></i> Mudar</button>
+            </div>
+            <input type="hidden" name="imagem" id="imagem">
+        </div>
+        <div class="col-67">
+            <div class="list list-inset">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Nome do Animal</span>
+                    <input type="text" name="nome" id="nome" ng-model="nome" required>
+                </label>
+
+                <span class="bloco" ng-show="mainForm.nome.$invalid && !mainForm.nome.$pristine">Nome obrigatório</span>
+                <div class="item item-icon-right" ng-click="selecionarGenero()">
+                    Gênero
+                    <i class="icon ion-ios-arrow-down"></i>
+                    <p>{{genero}}</p>
+                    <input type="hidden" name="sexo" id="sexo" ng-model="sexo" />
+
+                </div>
+                <span class="bloco" ng-show="mainForm.sexo.$invalid && !mainForm.sexo.$pristine">Gênero obrigatório</span>
+
+                <div class="item item-icon-right" ng-click="selecionarTipos()">
+                  Tipo
+                  <i class="icon ion-ios-arrow-down"></i>
+                  <p>{{tipo}}</p>
+                  <input type="hidden" name="tipos_id" id="tipos_id"  ng-model="tipos_id" />
+                </div>
+
+                <span class="bloco" ng-show="mainForm.tipos_id.$invalid && !mainForm.tipos_id.$pristine">Tipo obrigatório</span>
+
+                <div class="item item-icon-right" ng-click="selecionarRacas()">
+                    Raça/Espécie
+                    <i class="icon ion-ios-arrow-down"></i>
+                    <p>{{raca}}</p>
+                    <input type="hidden" name="raca" id="raca" />
+                </div>
+                <img src="{{racaImg}}" class="img-responsive" />
+
+                <span class="bloco" ng-show="mainForm.raca.$invalid && !mainForm.raca.$pristine">Raça obrigatória</span>
+                <div class="item item-icon-right" ng-click="selecionarPorte()">
+                  Porte
+                  <i class="icon ion-ios-arrow-down"></i>
+                  <p>{{porte}}</p>
+                  <input type="hidden" name="porte" id="porte" />
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="item item-divider">
+            <i class="ion-ios-heart"></i> Encontrar Parceiros
+        </div>
+
+        <div class="list">
+
+            <span class="bloco" ng-show="mainForm.porte.$invalid && !mainForm.porte.$pristine">Selecione  o porte</span>
+            <label class="item item-input item-select">
+              <div class="input-label">
+                Procurar por mesma raça 
+              </div>
+              <select name="mesma_raca" id="mesma_raca" ng-model="myModel.mesma_raca" required>
+                <option value="sim">Sim</option>
+                <option value="nao">Não</option>
+              </select>
+            </label>
+
+            <label class="item item-input item-stacked-label range">
+                <span>Distância</span>
+                <input type="range" name="distancia" id="distancia" ng-model="myModel.distancia" min="1" max="50" required>
+                {{myModel.distancia}} Km
+            </label>
+            <label class="item item-input item-stacked-label">
+                <span>Descrição</span>
+                <textarea name="descricao" id="descricao" rows="5"></textarea>
+            </label>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="item item-divider">
+           <i class="ion ion-ios-location"></i> Meu Local 
+        </div>
+        <div class="list">
+
+            <label class="item item-input item-stacked-label">
+                <span>CEP</span>
+                <input type="tel" name="cep" id="cep" ng-blur="resgataEndereco()"  ng-model="cep" ui-mask="99999-999" required>
+                <span class="bloco assertive" ng-show="mainForm.cep.$invalid && !mainForm.cep.$pristine">CEP obrigatório</span>
+            </label>
+
+        
+            <label class="item item-input item-stacked-label">
+                <span>Logradouro</span>
+                <textarea name="endereco" id="endereco" required cols="30" rows="5" ng-model="endereco"></textarea>
+            </label>
+
+            <span class="bloco" ng-show="mainForm.endereco.$invalid && !mainForm.endereco.$pristine">Endereço obrigatório</span>
+
+            <label class="item item-input item-stacked-label">
+                <span>Bairro</span>
+                <input type="text" name="bairro" id="bairro" ng-model="bairro" required>
+            </label>
+
+            <span class="bloco" ng-show="mainForm.bairro.$invalid && !mainForm.bairro.$pristine">Bairro obrigatório</span>
+
+            <label class="item item-input item-stacked-label">
+                <span>Complemento</span>
+                <input type="text" name="complemento" id="complemento">
+            </label>
+
+
+            <label class="item item-input item-stacked-label">
+                <span>Cidade</span>
+                <input type="text" name="cidade" id="cidade" ng-model="cidade" required>
+            </label>
+
+            <span class="bloco" ng-show="mainForm.cidade.$invalid && !mainForm.cidade.$pristine">Cidade obrigatória</span>
+
+            <label class="item item-input item-stacked-label">
+                <span>Estado</span>
+                <input type="text" name="estado" id="estado" maxlength="2" ng-model="estado" required>
+                <span class="bloco" ng-show="mainForm.estado.$invalid && !mainForm.estado.$pristine">Estado obrigatório</span>
+            </label>
+        </div>
+
+	</div>
+        <div class="padding-horizontal">
+            <button type="submit" ng-disabled="mainForm.$invalid"  class="button button-full button-positive">Cadastrar</button>
+        </div>
+
+</form>
+
+</ion-content>
+</ion-view>
+

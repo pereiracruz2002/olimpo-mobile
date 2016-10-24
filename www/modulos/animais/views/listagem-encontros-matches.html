@@ -1,0 +1,49 @@
+<ion-view  title="Combinações">
+<ion-content class="content has-header">
+
+
+	<div class="card"  ng-if="animais.length == 0">
+	  <div class="item item-text-wrap">
+	   Nenhuma combinação no momento
+	  </div>
+	</div>
+	</div>
+	
+	
+
+	<div class="col text-center" ng-show="loading"><ion-spinner icon="spiral"></ion-spinner></div>
+
+
+
+
+
+	<div class="list">
+
+	    <a class="item item-avatar" href="#/app/encontros/detalhes_matches/{{animal.animais_id}}/{{animais_id}}" ng-repeat="animal in animais">
+	      <img src="{{animal.imagem |concatenaservidor }}">
+	      <h2>{{animal.nome}}</h2>
+	      <p>Raça:{{animal.raca}}</p>
+	    </a>
+
+	</div>
+
+
+	<div id="mensagemCombinacoes" ng-if="animais.length <= 1">
+		<i class="icon ion-android-favorite-outline"></i>
+
+		<p>Encontre mais pares para o seu pet.</p>
+		<p>Já procurou hoje?</p>
+
+		<a href="#/app/encontros/{{animais_id}}" class="button button-block button-positive">
+		  Buscar!
+		</a>
+	</div>
+
+
+
+
+
+</ion-content>
+</ion-view>
+
+

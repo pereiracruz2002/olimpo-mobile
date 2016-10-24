@@ -1,0 +1,139 @@
+<ion-view  title="Nova Empresa">
+    <ion-content class="content has-header">
+
+        <div class="list" ng-if="msg.length>0" >
+            <div >
+                <div class="list card">
+
+                    <p ng-repeat="item in msg" class="item item-icon-left" href="#">
+                        <i class="icon ion-alert-circled"></i>
+                        {{item}}
+                    </p>
+
+                </div>
+
+
+            </div>
+        </div>
+
+        <form id="cadastroEmpresas" name="mainForm" ng-submit="cadastrar()">
+
+            <div class="list list-inset">
+
+
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">CNPJ</span>
+                    <input type="text" name="cnpj" id="cnpj" required ng-model="servico.cnpj" ui-mask-placeholder-char="_" ui-mask="99.999.999/9999-99" value="{{servico.cnpj}}">
+                  </label>
+
+
+                <span class="bloco" ng-show="mainForm.cnpj.$invalid && !mainForm.cnpj.$pristine">CNPJ obrigatório</span>
+
+
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Nome Fantasia</span>
+                    <input type="text" name="nome_fantasia" id="nome_fantasia" placeholder="Corporation S/A" required>
+                </label>
+
+
+                <span class="bloco" ng-show="mainForm.nome_fantasia.$invalid && !mainForm.nome_fantasia.$pristine">Nome Fantasia obrigatório</span>
+
+
+
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Sobre a Empresa</span>
+                    <textarea name="descricao" id="descricao" cols="30" ng-model="empresa.descricao" rows="5" placeholder="Digite uma breve descrição sobre sua empresa" required ></textarea>
+                   
+                </label>
+
+
+                <span class="bloco" ng-show="mainForm.descricao.$invalid && !mainForm.descricao.$pristine">Descrição obrigatório</span>
+
+
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">E-mail</span>
+                    <input type="text" name="email" ng-model="servico.email" id="email" placeholder="ex:jose@terra.com.br" required>
+                </label>
+                
+
+
+                <span class="bloco" ng-show="mainForm.email.$error.required && !mainForm.email.$pristine">Digite seu e-mail</span>
+                 <span class="bloco" ng-show="mainForm.email.$error.email && !mainForm.email.$pristine">e-mail invalido</span>
+
+            <!--     <span class="bloco" ng-show="mainForm.email.$invalid && !mainForm.email.$pristine">E-mail obrigatório</span> -->
+
+
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">CEP</span>
+                    <input type="text" name="cep" id="cep" ng-blur="resgataEndereco()" ng-model="empresa.cep" ui-mask="99999-999"  required>
+                </label>
+
+                <span class="bloco" ng-show="mainForm.cep.$invalid && !mainForm.cep.$pristine">CEP obrigatório</span>
+
+
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Endereço</span>
+                    <textarea name="endereco" id="endereco" cols="30" ng-model="empresa.endereco" rows="5" placeholder="Ex: Rua tal, 71" required ></textarea>
+                   
+                </label>
+
+
+                <span class="bloco" ng-show="mainForm.endereco.$invalid && !mainForm.endereco.$pristine">Endereço obrigatório</span>
+
+                <label class="item item-input item-stacked-label">
+                    <span>Bairro</span>
+                    <input type="text" name="bairro" id="bairro" placeholder="Ex:Paulicéia" ng-model="empresa.bairro" required>
+                </label>
+
+                <span class="bloco" ng-show="mainForm.bairro.$invalid && !mainForm.bairro.$pristine">Bairro obrigatório</span>
+
+
+                <label class="item item-input item-stacked-label">
+                    <span>Complemento</span>
+                    <input type="text" name="complemento" id="complemento" placeholder="Ex:Casa" >
+                </label>
+
+
+
+                <label class="item item-input item-stacked-label">
+                    <span>Cidade</span>
+                    <input type="text" name="cidade" id="cidade" placeholder="Ex:São Paulo" ng-model="empresa.cidade" required>
+
+                </label>
+                <span class="bloco" ng-show="mainForm.cidade.$invalid && !mainForm.cidade.$pristine">Cidade obrigatório</span>
+
+                <label class="item item-input item-stacked-label">
+                    <span>Estado</span>
+                    <input type="text" name="estado" id="estado" placeholder="Ex:SP" ng-model="empresa.estado" required>
+
+                </label>
+                <span class="bloco" ng-show="mainForm.estado.$invalid && !mainForm.estado.$pristine">Estado obrigatório</span>
+
+
+
+
+                <label class="item item-input item-stacked-label">
+                    <span>Telefone</span>
+                    <input type="text" name="telefone" id="telefone"  ui-mask="(099)9999-9999" ng-model="empresa.telefone" required>
+
+                </label>
+                <span class="bloco" ng-show="mainForm.telefone.$invalid && !mainForm.telefone.$pristine">Telefone obrigatório</span>
+
+
+                <label class="item item-input item-stacked-label">
+                    <span>Celular</span>
+                    <input type="text" name="celular" id="celular" ng-model="empresa.celular" ui-mask="(099)99999-999?9">
+                </label>
+
+                <button ng-click="imagem()" type="button" class="button button-block button-assertive activated">Adicionar Logotipo</button>
+
+                <input type="hidden" name="imagem" id="imagem">
+
+                <input type="hidden" name="users_id" id="users_id" value="{{token}}">
+                <button  type="submit" ng-disabled="mainForm.$invalid" class="button button-block button-positive activated">Cadastrar</button>
+            </div>
+        </form>
+
+    </ion-content>
+</ion-view>
+

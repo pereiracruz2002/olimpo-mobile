@@ -1,0 +1,125 @@
+<ion-view title="Conversa">
+
+    <ion-content scroll="false">
+
+    	
+    	<div id="menu-opcoes">
+    		<a id="mostra-menu"><span class="circulo">&bull;</span> Opções</a>
+    		<ul class="opcoes">
+    			<li ng-click="descombinar()">Descombinar</li>
+    			<li ng-click="mostrarOpcaoDenuncia()">Denunciar</li>
+    		</ul>
+
+    	</div>
+
+
+
+
+
+
+
+		<div id="opt-denuncia">
+
+			<div class="col text-center" ng-show="loadingdenuncia"><ion-spinner icon="spiral"></ion-spinner></div>
+
+			<form id="denuncias">
+				<ion-list>
+					<ion-radio ng-click="hideTextarea()" value="Inapropriada" ng-model="choice" ng-value="'Inapropriada'">Mensagem Inapropriada</ion-radio>
+					<ion-radio ng-click="hideTextarea()" value="Inadequada" ng-model="choice" ng-value="'Inadequadas'">Fotos Inadequeadas</ion-radio>
+					<ion-radio ng-click="showTextarea()" value="Outros" ng-model="choice" ng-value="'Outros'">Outros</ion-radio>
+				</ion-list>
+
+				<textarea name="texto" rows="5" id="texto" placeholder="Escreva sua denúncia."></textarea>
+				<button ng-click="denunciar()"  class="button button-full button-positive">Enviar</button>
+			</form>
+		</div>
+
+
+
+
+
+
+
+
+<!--
+		<ion-side-menus enable-menu-with-back-views="true">
+			<ion-side-menu-content>
+				<ion-nav-bar class="bar-stable">
+					<ion-nav-back-button>
+					</ion-nav-back-button>
+
+					<ion-nav-buttons side="right">
+						<button class="button button-icon button-clear ion-navicon" menu-toggle="right">
+						</button>
+					</ion-nav-buttons>
+				</ion-nav-bar>
+				<ion-nav-view name="menuContent"></ion-nav-view>
+			</ion-side-menu-content>
+
+			<ion-side-menu side="right">
+				<ion-header-bar class="bar-stable">
+
+				</ion-header-bar>
+				<ion-content>
+					<ion-list>
+						<ion-item menu-close ng-click="mostrarOpcaoDenuncia()">
+							Denúnicar
+						</ion-item>
+
+						<ion-item menu-close ng-click="descombinar()">
+							Descombinar
+						</ion-item>
+					</ion-list>
+				</ion-content>
+			</ion-side-menu>
+		</ion-side-menus>
+
+
+		-->
+
+
+		<div class="card"   ng-if="conversas.conversas.length == 0">
+		  <div id="nenhumamensagem" class="item item-text-wrap">
+		   Nenhuma mensagem 
+		  </div>
+		</div>
+		</div>
+
+
+		<div class="col text-center" ng-show="loading"><ion-spinner icon="spiral"></ion-spinner></div>
+
+
+		<div id="conversas" class="list">
+
+			<a class="item textos" id="mostra-mais" ng-click="anteriores()" ng-if="conversas.quantidade > 10">
+				<p>Ver mensagens anteriores</p>
+			</a>
+
+			<a class="item item-avatar" ng-repeat="conversa in conversas.conversas">
+				<img src="{{conversa.animais.imagem |concatenaservidor }}">
+				<h2>{{conversa.animais.nome}} <strong>{{conversa.updated_at | formata_datetime}}</strong></h2>
+				<p>{{conversa.mensagem}}</p>
+			</a>
+
+			
+
+		</div>
+
+		<form id="enviaconversas" ng-submit="enviarMensagem()">
+
+			<input type="text" required name="mensagem" id="mensagem"  placeholder="Digite sua mensagem">
+
+
+			<input type="hidden" id="sala" name="sala" value="{{sala}}" />
+			<input type="hidden" id="animais_id" name="animais_id" value="{{meuAnimal}}" />
+			<button  type="submit"  class="button button-full button-positive">Salvar</button>
+		</form>
+
+
+
+
+
+    </ion-content>
+
+</ion-view>
+

@@ -1,0 +1,616 @@
+/*
+To customize the look and feel of Ionic, you can override the variables
+in ionic's _variables.scss file.
+
+For example, you might change some of the default colors:
+
+$light:                           #fff !default;
+$stable:                          #f8f8f8 !default;
+$positive:                        #387ef5 !default;
+$calm:                            #11c1f3 !default;
+$balanced:                        #33cd5f !default;
+$energized:                       #ffc900 !default;
+$assertive:                       #ef473a !default;
+$royal:                           #886aea !default;
+$dark:                            #444 !default;
+*/
+
+
+$royal: #3b5998;
+$bar-stable-bg:#0fa0c4 !default;
+$menu-title-color:#f1c514 !default;
+$font-family-sans-serif:'ArialRoundedMTBold','-apple-system', "Helvetica Neue", "Roboto", "Segoe UI", sans-serif !default;
+
+$zeraTudo:0;
+$bar-positive-bg:#0fa0c4;
+$positive: #0fa0c4;
+$button-energized-text: #036d87 !important;
+$button-energized-bg:darken(#f1c514, 2%) !default;
+$button-energized-active-bg:darken(#f1c514, 5%) !default;
+$button-energized-border: #7c9393;
+
+
+/* Empty. Add your own CSS if you like */
+
+select#perfil{
+    background:transparent;
+    height:auto;
+    padding:8px;
+}
+
+#nomeEmpresa{
+	margin-top: 14px;
+}
+#imagem-login{
+	width: 100%;
+}
+
+#imagem-cadastro{
+	width: 100%;
+
+}
+
+#botao-cadastro{
+	background: #11c1f3 !important;
+}
+
+#btn-voltar{
+	padding-left: 10px;
+	color: #0fa0c4;
+}
+
+.menu .title{
+  background:$menu-title-color !important;
+  margin:$zeraTudo;
+  text-indent:10px;
+  color:#fff!important;
+  border:none!important;
+}
+.empresa .menu .title{
+  background:#ef473a !important;
+}
+.empresa .menu,
+.empresa .menu .item-content,
+.empresa .menu .item{
+    background:#444;
+    color:#fff;
+}
+
+.empresa .menu .item-content.activated{
+    background:#222;
+}
+
+.empresa .bar.bar-stable{
+    background:#886aea;
+}
+
+.menu .title-left{
+  background:$menu-title-color;
+  margin:$zeraTudo;
+  color:#fff!important;
+  border:none!important;
+}
+
+.menu .icon{
+	font-size:30px;
+	color:#11c1f3;
+	vertical-align:middle;
+	margin-right: 20px;
+}
+.empresa .menu .icon{
+    color:#E6EDEF;
+}
+
+.menu select{
+	width:100%;
+	height:20px;
+	border:none;
+	background:#fff;
+
+}
+
+.bar-header .ion-navicon{
+	color:#fff!important;
+}
+
+.bar-header .title{
+	color:#fff!important;
+}
+
+.ion-android-notifications{
+	color:#fff!important;
+}
+
+
+
+h1{
+	font-size: 20px;
+	font-family: arial;
+	font-weight: bold;
+}
+
+textarea{
+	width: 100% !important;
+	resize:none;
+
+}
+
+a{
+	text-decoration: none;
+}
+
+a.curtidasim{
+	color: rgb(88, 144, 255);
+	font-weight: bold;
+	
+}
+
+a.curtidanao{
+	color: #000;
+
+}
+
+#editarAnimais img{
+	width: 100%;
+}
+
+#container-info-animal .ion-heart{
+	font-size: 50px;
+	color: #f00;
+	float: left;
+
+}
+
+#container-info-animal .ion-android-close{
+	font-size: 50px;
+	
+	float: right;
+
+}
+
+#denuncias, .textearea{
+	z-index: 999999999999;
+	position: absolute;
+	width: 100%;
+	background: #fff;
+}
+
+#conversas{
+	height: 70vh;
+	overflow-x:hidden;
+	position: relative;
+	margin-bottom: 100px;
+}
+
+
+#enviaconversas{
+
+	width: 100%;
+	display: block;
+	position: fixed;
+	bottom: 0;
+	z-index: 99999999;
+	padding: 5px;
+	background-color: #fff;
+
+
+}
+
+#enviaconversas textarea{
+	width: 100%;
+}
+
+
+#menu-opcoes{
+	background: #faca22;
+	color: #fff;
+	text-align: right;
+	position: relative;
+}
+
+#menu-opcoes a{
+	display: inline-block;
+	color: #fff;
+	padding: 10px;
+	position: relative;
+}
+
+
+
+#menu-opcoes ul{
+	display: none;
+}
+
+
+#menu-opcoes ul{
+	position: absolute;
+	top: 100%;
+	right: 0;
+	background: #faca22;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	z-index: 99999999999999999;
+	
+}
+
+
+.circulo{
+	font-size: 40px;
+	position: absolute;
+	left: -5px;
+	top: 12px;
+}
+
+
+#menu-opcoes ul li{
+	line-height: 30px;
+}
+
+#listagem-solicitacoes .item{
+	font-size: 25px !important;
+}
+
+#listagem-solicitacoes p{
+
+	max-width: 100%;
+
+ overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap
+
+}
+
+#opcoes-container{
+	position: absolute;
+	bottom: -1px;
+	z-index: 999999;
+	width: 100%;
+}
+
+.listagem-animais{
+	position: relative;
+	padding-bottom: 50px !important;
+}
+
+a.opcoes{
+	display: inline-block;
+	width:  31.333333333333336%;
+	text-align: center;
+	font-size: 10px;
+	margin-top: 10px;
+	color: #000 !important;
+	vertical-align: middle;
+
+}
+
+a.opcoes i{
+	color: #fff;
+	padding: 20px 25px;
+	display: inline-block;
+	font-size: 30px;
+	text-align: center;
+	background: #11c1f3;
+	border-radius: 100%;
+	margin: 5px;
+}
+
+a.opcoes div.border{
+	display: inline-block;
+	border:1px solid rgba(0,0,0,0.1);
+	border-radius: 100%;
+	box-shadow: 1px 1px 3px rgba(255,255,255,0.1),-1px -1px 3px rgba(255,255,255,0.1);
+}
+
+a.opcoes p{
+	font-size: 15px;
+	font-weight: bold;
+}
+
+#conversas a h2{
+	font-size: 10px;
+}
+
+
+#conversas .item p{
+	overflow: none !important;
+	text-overflow: none !important;
+	white-space: normal;
+	font-size: 10px;
+	color: #000;
+	font-family: "Ubuntu",sans-serif;
+}
+
+#mensagem{
+	width: 100%;
+}
+
+
+#conversas .item.textos{
+	text-align: center;
+	font-size: 20px;
+	font-weight: bold;
+
+}
+
+#conversas .item.textos p{
+		color: #f00 !important;
+}
+
+span.bloco{
+	display: block;
+	width: 100%;
+	float: left;
+
+}
+
+#container-estrela{
+	text-align: right;
+	padding-right: 10px;
+}
+
+.estrela-favorito{
+	display: inline-block;
+	font-size: 35px;
+	
+}
+
+#quantidade{
+	position: relative;
+	z-index: 9999999999;
+	top: -3px;
+
+}
+
+#quantidade i{
+	font-size: 40px;
+	color: #000;
+}
+
+#quantidade span{
+	position: absolute;
+    top: 9px;
+    left: 31%;
+    -ms-transform:translateX(-50%); /* IE 9 */
+    -webkit-transform:translateX(-50%); /* Chrome, Safari, Opera */
+    transform:translateX(-50%);
+    color: #f00;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#lista-notificacoes .visto{
+
+	background: #fff !important;
+
+}
+
+#lista-notificacoes .item p {
+
+	overflow: auto !important;
+	text-overflow: inherit !important;
+	white-space: normal !important;
+
+}
+
+.cover{
+    background:url('../img/cover.png') no-repeat;
+    background-size:cover;
+}
+.cover img{
+    max-width:100%;
+}
+.titulo-centralizado{
+	text-align: center !important;
+}
+
+.item h3.subtitulo, .item a.subtitulo{
+	color: #0fa0c4;
+	font-size: 18px;
+	margin-top:0;
+}
+
+.item p{
+	color:#666666;
+}
+
+.item p.destaque a{
+	color:#387ef5;
+}
+
+.list h1.titulo-dourado {
+	color: #c4a80f;
+}
+.ion-android-arrow-back{
+	color: #fff;
+}
+
+.itemanimal{
+	padding-top: 20px !important;
+    padding-bottom: 20px !important;
+}
+
+.dados-animal{
+	margin-top:5px;
+}
+
+.dados-animal span{
+	color: #11c1f3;
+	margin-right: 5px;
+}
+
+.dados-animal h3{
+	line-height: 20px;
+
+}
+
+#mensagemeditar{
+	width: 60%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+
+#mensagemeditar .pata{
+	font-size: 60px;
+	color: #dcb103;
+	margin-right: 10px;
+}
+
+
+// The path for our ionicons font files, relative to the built CSS in www/css
+$ionicons-font-path: "../lib/ionic/fonts" !default;
+
+// Include all of Ionic
+@import "www/lib/ionic/scss/ionic";
+
+.icon-rounded{
+    border-radius: 50%;
+    padding: 10px 15px;
+}
+.cover .energized-bg{
+    color:#fff;
+}
+
+.cover h3{
+    margin-bottom:20px;
+}
+
+#mensagemCombinacoes{
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+#mensagemCombinacoes .icon{
+	color: #ff0054 !important;
+	font-size: 160px;
+}
+
+#mensagemCombinacoes{
+	color: #05a5d2;
+	font-size: 25px;
+	line-height: 30px;
+}
+
+#mensagemEncontros{
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+#mensagemEncontros .icon{
+	color: #cdcdcd !important;
+	font-size: 160px;
+}
+
+#mensagemEncontros{
+	color: #cdcdcd;
+	font-size: 48px !important;
+	line-height: 30px;
+	margin-top:70px;
+}
+
+#mensagemEncontro p{
+	color:#cdcdcd;
+}
+
+
+.icone-comentario{
+	font-size: 29px;
+}
+
+#curtidasim,#curtidanao{
+	font-size: 20px;
+	vertical-align: middle;
+
+}
+
+#titulo-nome{
+	vertical-align: middle;
+    line-height: 42px;
+}
+.has-bigfooter{
+    bottom:66px;
+}
+.bar-bigfooter {
+    bottom: 0;
+    border-top-width: 1px;
+    border-bottom-width: 0;
+    background-position: top;
+    height: 65px;
+}
+#listagemConversas small{
+    font-size:70%;
+    font-weight:normal;
+    color:#777;
+    text-align:right;
+}
+.item-footer{
+    padding-top:3px;
+    padding-bottom:3px;
+}
+#listagemConversas .card .item-text-wrap{
+    padding:8px;
+}
+#listagemConversas .avatar,
+#listagemConversas .mensagem,
+#listagemConversas .card{
+    position:relative;
+}
+
+.status-msg{
+    margin-top:-15px;
+    margin-right:12px;
+}
+.assertive-bg{
+    color:#fff;
+}
+.home .card h1{
+    font-size:90px;
+}
+.pull-right{
+    float:right;
+}
+.dica{
+    max-height: 5000px;
+    transition: all 1s;
+    overflow:hidden;
+}
+.dica-off{
+    max-height: 0px;
+    opacity:0;
+    visibility: hidden;
+    margin:0 !important;
+    padding:0 !important;
+}
+.img-responsive{
+    max-width:100%;
+    display:inline-block;
+}
+
+
+
+
+.item-select:after {
+    top: 38% !important;
+}
+.card .item.item-input.range input{
+    width: 95%;
+    padding-right: 0;
+}
+
+.action-sheet-group{
+    overflow-y: scroll;
+    max-height: 400px;
+}
+.button{
+    border-radius:0;
+}
+.text-small{
+    font-size:0.8em;
+}
